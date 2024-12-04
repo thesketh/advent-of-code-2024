@@ -1,0 +1,110 @@
+[project]
+name = "advent-of-code-2024"
+version = "0.1.0"
+description = "Solutions to the 2024 Advent of Code problems."
+readme = "README.md"
+authors = [{ name = "Travis Hesketh", email = "travis@hesketh.scot" }]
+requires-python = ">=3.13"
+dependencies = ["aoc_core", "one", "two", "three", "four", "pydantic>=2.10.2"]
+
+[project.scripts]
+aoc = "advent_of_code_2024.main:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.workspace]
+members = ["days/*"]
+
+[tool.uv.sources]
+aoc_core = { workspace = true }
+one = { workspace = true }
+two = { workspace = true }
+three = { workspace = true }
+four = { workspace = true }
+
+
+[tool.ruff]
+target-version = "py312"
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+line-length = 100
+indent-width = 4
+
+[tool.ruff.lint]
+# The default config could do with being more harsh.
+select = ["ALL"]
+ignore = [
+    "ANN401",
+    "B028",
+    "COM812",
+    "D107",
+    "D203",
+    "D205",
+    "D211",
+    "D212",
+    "D407",
+    "DTZ005",
+    "EM101",
+    "EM102",
+    "FIX002",
+    "ISC",
+    "PTH123",
+    "D105",
+    "T201",
+    "TID252",
+    "TD002",
+    "TD003",
+    "TRY003",
+    "UP015",
+    "UP040",
+]
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^_+"
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/*" = ["D104", "E501", "S101", "SLF001"]
+"scripts/*" = ["INP001"]
+
+[tool.ruff.lint.pylint]
+max-args = 7
+
+[tool.ruff.format]
+# Default to Black-like config.
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+
+[dependency-groups]
+dev = ["mypy>=1.13.0", "ruff>=0.8.1"]

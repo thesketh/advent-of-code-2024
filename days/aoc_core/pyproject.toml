@@ -1,0 +1,12 @@
+[project]
+name = "aoc-core"
+version = "0.1.0"
+description = "Core types for advent of code."
+readme = "README.md"
+authors = [{ name = "Travis Hesketh", email = "travis@hesketh.scot" }]
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
