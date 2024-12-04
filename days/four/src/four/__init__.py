@@ -1,4 +1,4 @@
-"""The day four solution to advent of code."""
+"""The day four solution to Advent of Code."""
 
 from collections import Counter
 from itertools import repeat
@@ -107,7 +107,7 @@ def part_two(lines: Lines) -> None:
 
 
 def run(part: Part, *, test: bool = False) -> None:
-    """Run the solution to the first Advent of Code problem."""
+    """Run the solution to the fourth Advent of Code problem."""
     lines = load_input(test=test)
 
     if part in ("one", "both"):

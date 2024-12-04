@@ -1,4 +1,4 @@
-"""The day one solution to advent of code."""
+"""The day one solution to Advent of Code."""
 
 import re
 from collections import Counter

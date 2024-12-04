@@ -1,4 +1,4 @@
-"""The day two solution to advent of code."""
+"""The day two solution to Advent of Code."""
 
 from collections.abc import Iterable, Iterator
 from itertools import tee
@@ -23,8 +23,8 @@ SAFE_RANGE = range(MIN_SAFE_THRESHOLD, MAX_SAFE_THRESHOLD + 1)
 
 def pairwise[T](iterable: Iterable[T]) -> Iterator[tuple[T, T]]:
     """
-    Iterate over an iterable using a sliding window, yielding the
-    value and the next value.
+    Iterate over an iterable pairwise, returning the value and the
+    next value in a tuple.
 
     """
     current_iter, next_iter = tee(iter(iterable))
@@ -44,7 +44,7 @@ def load_input(*, test: bool = False) -> Reports:
         return [list(map(int, line.split())) for line in lines]
 
 
-def report_safe(report: Report) -> bool:
+def check_report_safe(report: Report) -> bool:
     """Return whether a report is safe."""
     n_transitions = len(report) - 1
     diffs = (next_ - current for current, next_ in pairwise(report))
@@ -53,27 +53,27 @@ def report_safe(report: Report) -> bool:
     return n_safe_transitions == n_transitions
 
 
-def report_safe_with_skips(report: Report) -> bool:
-    """Return whether a report is safe with skipped values."""
-    if report_safe(report):
+def check_report_safe_with_skips(report: Report) -> bool:
+    """Return whether a report is safe, allowing a single skipped value."""
+    if check_report_safe(report):
         return True
 
     for skip_index in range(len(report)):
         new_report = report[:skip_index] + report[skip_index + 1 :]
-        if report_safe(new_report):
+        if check_report_safe(new_report):
             return True
     return False
 
 
 def part_one(reports: Reports) -> None:
     """Perform part one of the Advent of Code solution."""
-    safe_count = sum(map(report_safe, reports))
+    safe_count = sum(map(check_report_safe, reports))
     print(f"Part one: {safe_count} reports are safe")
 
 
 def part_two(reports: Reports) -> None:
     """Perform part two of the Advent of Code solution."""
-    safe_count = sum(map(report_safe_with_skips, reports))
+    safe_count = sum(map(check_report_safe_with_skips, reports))
     print(f"Part two: {safe_count} reports are safe")
 
 

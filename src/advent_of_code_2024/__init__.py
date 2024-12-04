@@ -1,1 +1,1 @@
-"""A CLI to run advent of code solutions."""
+"""A CLI to run Advent of Code solutions."""

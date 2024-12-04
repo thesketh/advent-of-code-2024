@@ -1,4 +1,4 @@
-"""The day three solution to advent of code."""
+"""The day three solution to Advent of Code."""
 
 import re
 from itertools import starmap
@@ -50,7 +50,7 @@ def part_two(instructions: Instructions) -> None:
 
 
 def run(part: Part, *, test: bool = False) -> None:
-    """Run the solution to the second Advent of Code problem."""
+    """Run the solution to the third Advent of Code problem."""
     if part in ("one", "both"):
         instructions = load_input("one", test=test)
         part_one(instructions)

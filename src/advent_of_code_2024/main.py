@@ -1,4 +1,4 @@
-"""The CLI for the advent of code runner."""
+"""The CLI for the Advent of Code runner."""
 
 import sys
 from argparse import ArgumentParser, Namespace
@@ -43,7 +43,7 @@ def _parse_args(argv: list[str]) -> _RunnerArgs:
 
 
 def main(argv: list[str]) -> None:
-    """Run an advent of code entry using provided CLI args."""
+    """Run an Advent of Code entry using provided CLI args."""
     args = _parse_args(argv)
     try:
         runner = _RUNNERS[args.day]
@@ -54,7 +54,7 @@ def main(argv: list[str]) -> None:
 
 
 def run() -> None:
-    """Run an advent of code entry using the program's argv."""
+    """Run an Advent of Code entry using the program's argv."""
     return main(sys.argv[1:])
 
 
