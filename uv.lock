@@ -5,6 +5,7 @@ requires-python = ">=3.13"
 members = [
     "advent-of-code-2024",
     "aoc-core",
+    "five",
     "four",
     "one",
     "three",
@@ -17,6 +18,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "aoc-core" },
+    { name = "five" },
     { name = "four" },
     { name = "one" },
     { name = "pydantic" },
@@ -33,9 +35,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "aoc-core", editable = "days/aoc_core" },
+    { name = "five", editable = "days/five" },
     { name = "four", editable = "days/four" },
     { name = "one", editable = "days/one" },
-    { name = "pydantic", specifier = ">=2.10.3" },
+    { name = "pydantic", specifier = ">=2.10.2" },
     { name = "three", editable = "days/three" },
     { name = "two", editable = "days/two" },
 ]
@@ -59,6 +62,17 @@ wheels = [
 name = "aoc-core"
 version = "0.1.0"
 source = { editable = "days/aoc_core" }
+
+[[package]]
+name = "five"
+version = "0.1.0"
+source = { editable = "days/five" }
+dependencies = [
+    { name = "aoc-core" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "aoc-core", editable = "days/aoc_core" }]
 
 [[package]]
 name = "four"

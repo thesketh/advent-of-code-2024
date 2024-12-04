@@ -1,12 +1,15 @@
 """The CLI for the Advent of Code runner."""
 
-import sys
+import sys  # noqa: I001
 from argparse import ArgumentParser, Namespace
 
-import four
+# fmt: off
 import one
-import three
 import two
+import three
+import four
+import five
+# fmt: on
 from aoc_core import Day, Part, Runner
 from pydantic import TypeAdapter
 
@@ -19,7 +22,7 @@ class _RunnerArgs(Namespace):
     test: bool
 
 
-_RUNNERS: dict[Day, Runner] = {1: one.run, 2: two.run, 3: three.run, 4: four.run}
+_RUNNERS: dict[Day, Runner] = {1: one.run, 2: two.run, 3: three.run, 4: four.run, 5: five.run}
 """Runners for Advent of Code days."""
 
 

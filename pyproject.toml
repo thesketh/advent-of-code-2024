@@ -5,7 +5,15 @@ description = "Solutions to the 2024 Advent of Code problems."
 readme = "README.md"
 authors = [{ name = "Travis Hesketh", email = "travis@hesketh.scot" }]
 requires-python = ">=3.13"
-dependencies = ["aoc_core", "one", "two", "three", "four", "pydantic>=2.10.2"]
+dependencies = [
+    "aoc_core",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "pydantic>=2.10.2",
+]
 
 [project.scripts]
 aoc = "advent_of_code_2024.main:run"
@@ -23,6 +31,7 @@ one = { workspace = true }
 two = { workspace = true }
 three = { workspace = true }
 four = { workspace = true }
+five = { workspace = true }
 
 
 [tool.ruff]
