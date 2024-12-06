@@ -12,6 +12,7 @@ dependencies = [
     "three",
     "four",
     "five",
+    "six",
     "pydantic>=2.10.2",
 ]
 
@@ -32,6 +33,7 @@ two = { workspace = true }
 three = { workspace = true }
 four = { workspace = true }
 five = { workspace = true }
+six = { workspace = true }
 
 
 [tool.ruff]

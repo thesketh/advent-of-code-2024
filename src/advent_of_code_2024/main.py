@@ -9,6 +9,7 @@ import two
 import three
 import four
 import five
+import six
 # fmt: on
 from aoc_core import Day, Part, Runner
 from pydantic import TypeAdapter
@@ -22,7 +23,14 @@ class _RunnerArgs(Namespace):
     test: bool
 
 
-_RUNNERS: dict[Day, Runner] = {1: one.run, 2: two.run, 3: three.run, 4: four.run, 5: five.run}
+_RUNNERS: dict[Day, Runner] = {
+    1: one.run,
+    2: two.run,
+    3: three.run,
+    4: four.run,
+    5: five.run,
+    6: six.run,
+}
 """Runners for Advent of Code days."""
 
 
