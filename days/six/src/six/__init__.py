@@ -1,6 +1,7 @@
 """The day six solution to Advent of Code."""
 
 from collections.abc import Iterator
+from concurrent.futures import Future, ProcessPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar, Literal, cast
@@ -96,7 +97,7 @@ class Guard:
 
     def patrol(self, grid: Grid, visited: Visited | None = None) -> Iterator["Guard"]:
         """Patrol a grid, yielding the guard at each step."""
-        visited = visited.copy() if visited else set()
+        visited = visited or set()
         upper_y_bound = len(grid) - 1
         upper_x_bound = len(grid[0]) - 1
 
@@ -180,20 +181,19 @@ def part_two(grid: Grid, guard: Guard) -> None:
     """Perform part two of the Advent of Code solution."""
     route = guard.patrol(grid)
     guard = next(route)
-
-    visited: Visited = set()
     tried_obstacles = set()
 
-    n_looped_patrols = 0
-    for next_guard in route:
-        if (obstacle_position := next_guard.position) not in tried_obstacles:
-            new_grid = build_new_grid(grid, obstacle_position)
-            n_looped_patrols += guard.patrol_will_loop(new_grid, visited)
-            tried_obstacles.add(obstacle_position)
-        visited.add(guard)
-        guard = next_guard
+    futures: list[Future[bool]] = []
+    with ProcessPoolExecutor() as pool:
+        for next_guard in route:
+            if (obstacle_position := next_guard.position) not in tried_obstacles:
+                new_grid = build_new_grid(grid, obstacle_position)
+                futures.append(pool.submit(Guard.patrol_will_loop, guard, new_grid))
+                tried_obstacles.add(obstacle_position)
 
-    print(f"Part one: {n_looped_patrols} possible patrol loops")
+            guard = next_guard
+
+    print(f"Part two: {n_looped_patrols} possible patrol loops")
 
 
 def run(part: Part, *, test: bool = False) -> None:

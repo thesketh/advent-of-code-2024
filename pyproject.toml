@@ -13,6 +13,9 @@ dependencies = [
     "four",
     "five",
     "six",
+    "seven",
+    "eight",
+    "nine",
     "pydantic>=2.10.2",
 ]
 
@@ -34,10 +37,12 @@ three = { workspace = true }
 four = { workspace = true }
 five = { workspace = true }
 six = { workspace = true }
-
+seven = { workspace = true }
+eight = { workspace = true }
+nine = { workspace = true }
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py313"
 exclude = [
     ".bzr",
     ".direnv",
@@ -115,7 +120,7 @@ docstring-code-line-length = "dynamic"
 
 [tool.mypy]
 strict = true
-python_version = "3.12"
+python_version = "3.13"
 
 [dependency-groups]
 dev = ["mypy>=1.13.0", "ruff>=0.8.1"]

@@ -1,10 +1,8 @@
 """The day two solution to Advent of Code."""
 
-from collections.abc import Iterable, Iterator
-from itertools import tee
 from pathlib import Path
 
-from aoc_core import Part
+from aoc_core import Part, pairwise
 
 ROOT = Path(__file__).resolve().parent
 DATA_ROOT = ROOT.joinpath("data")
@@ -19,20 +17,6 @@ type Reports = list[Report]
 MIN_SAFE_THRESHOLD: Level = 1
 MAX_SAFE_THRESHOLD: Level = 3
 SAFE_RANGE = range(MIN_SAFE_THRESHOLD, MAX_SAFE_THRESHOLD + 1)
-
-
-def pairwise[T](iterable: Iterable[T]) -> Iterator[tuple[T, T]]:
-    """
-    Iterate over an iterable pairwise, returning the value and the
-    next value in a tuple.
-
-    """
-    current_iter, next_iter = tee(iter(iterable))
-    try:
-        next(next_iter)
-    except StopIteration:
-        return iter([])
-    return zip(current_iter, next_iter, strict=False)
 
 
 def load_input(*, test: bool = False) -> Reports:
